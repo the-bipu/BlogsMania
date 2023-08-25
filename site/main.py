@@ -1,7 +1,7 @@
 import os
 from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 import smtplib
 from flask_gravatar import Gravatar
@@ -15,13 +15,13 @@ from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, ContactForm
 
 
-OWN_EMAIL = os.environ["MY_EMAIL"]
-OWN_PASSWORD = os.environ["EMAIL_PASSWORD"]
+OWN_EMAIL = os.getenv("MY_EMAIL")
+OWN_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 ckeditor = CKEditor(app)
-Bootstrap5(app)
+Bootstrap(app)
 
 # For adding profile images to the comment section
 gravatar = Gravatar(app,
@@ -57,7 +57,7 @@ def admin_only(f):
 
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db = SQLAlchemy()
 db.init_app(app)
 

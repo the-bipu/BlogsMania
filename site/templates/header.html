@@ -9,11 +9,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Blog's Mania</title>
-    {% block styles %}
-    {% extends 'bootstrap/base.html' %}
 
-    <!-- Load Bootstrap-Flask CSS here -->
-    {{ bootstrap.load_css() }}
+    <link rel="shortcut icon" type="image/ico" href="static/img/favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
     <link
       rel="icon"
       type="image/x-icon"
@@ -40,7 +41,6 @@
       href="{{ url_for('static', filename='css/styles.css') }}"
       rel="stylesheet"
     />
-    {% endblock %}
   </head>
   <body>
     <!-- Navigation-->

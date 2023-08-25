@@ -1,5 +1,8 @@
-{% from "bootstrap/form.html" import render_form %} {% block content %} {%
-include "header.html" %}
+{% extends 'bootstrap/base.html' %}
+{% from "bootstrap/form.html" import render_form %}
+
+{% block content %}
+{% include "header.html" %}
 
 <!-- Page Header -->
 <header

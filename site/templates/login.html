@@ -1,5 +1,5 @@
 {% extends 'bootstrap/base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
 {%include "header.html" %}
@@ -34,7 +34,7 @@
       {% endwith %}
       <div class="col-lg-8 col-md-10 mx-auto">
         <!--TODO: render login form here-->
-        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
       </div>
     </div>
   </div>

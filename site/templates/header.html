@@ -12,21 +12,18 @@
 
     <link rel="shortcut icon" type="image/ico" href="static/img/favicon.ico">
 
-    {% block styles %}
-    {% extends 'bootstrap/base.html' %}
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Load Bootstrap-Flask CSS here -->
-    {{ bootstrap.load_css() }}
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='assets/img/favicon.ico') }}"
-    />
+    <!-- Custom fonts for this template -->
+    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
     ></script>
+
     <!-- Google fonts-->
     <link
       href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"

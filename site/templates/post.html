@@ -1,5 +1,5 @@
 {% extends 'bootstrap/base.html' %}
-{% from "bootstrap/form.html" import render_form %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% include "header.html" %}
 
@@ -46,7 +46,7 @@
         <!-- Configure it with the name of the form field from CommentForm -->
         {{ ckeditor.config(name='comment_text') }}
         <!-- Create the wtf quick form from CommentForm -->
-        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
         <div class="comment">
           <ul class="commentList">
             <!-- Show all comments -->

@@ -1,7 +1,7 @@
 import os
 from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 import smtplib
 from flask_gravatar import Gravatar
@@ -21,7 +21,7 @@ OWN_PASSWORD = os.getenv("EMAIL_PASSWORD")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 ckeditor = CKEditor(app)
-Bootstrap(app)
+Bootstrap5(app)
 
 # For adding profile images to the comment section
 gravatar = Gravatar(app,

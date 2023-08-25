@@ -12,13 +12,58 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship
 
 # Import your forms from the forms.py
-from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, ContactForm
+# from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, ContactForm
 
-OWN_EMAIL = os.environ["MY_EMAIL"]
-OWN_PASSWORD = os.environ["EMAIL_PASSWORD"]
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, URL
+from flask_ckeditor import CKEditorField
+
+
+# WTForm for creating a blog post
+class CreatePostForm(FlaskForm):
+    title = StringField("Blog Post Title", validators=[DataRequired()])
+    subtitle = StringField("Subtitle", validators=[DataRequired()])
+    img_url = StringField("Blog Image URL", validators=[DataRequired(), URL()])
+    body = CKEditorField("Blog Content", validators=[DataRequired()])
+    submit = SubmitField("Submit Post")
+
+
+# TODO: Create a RegisterForm to register new users
+class RegisterForm(FlaskForm):
+    name = StringField("Username", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("SIGN ME UP!")
+
+
+# TODO: Create a LoginForm to login existing users
+class LoginForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Let Me In!")
+
+
+# TODO: Create a CommentForm so users can leave comments below posts
+# Create a form to add comments
+class CommentForm(FlaskForm):
+    comment_text = CKEditorField("Comment", validators=[DataRequired()])
+    submit = SubmitField("Submit Comment")
+
+
+class ContactForm(FlaskForm):
+    name = StringField("Name")
+    email = StringField("Email")
+    phone = StringField("Phone")
+    message = StringField("Message")
+    submit = SubmitField("Send")
+
+
+OWN_EMAIL = 'selenophile184@gmail.com'
+OWN_PASSWORD = 'hupryadfyfzhztpy'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 

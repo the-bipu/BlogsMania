@@ -12,12 +12,15 @@
 
     <link rel="shortcut icon" type="image/ico" href="static/img/favicon.ico">
 
-<!--    <link-->
-<!--      rel="icon"-->
-<!--      type="image/x-icon"-->
-<!--      href="{{ url_for('static', filename='assets/favicon.ico') }}"-->
-<!--    />-->
-    
+    {% block styles %}
+
+    <!-- Load Bootstrap-Flask CSS here -->
+    {{ bootstrap.load_css() }}
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='assets/img/favicon.ico') }}"
+    />
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -39,7 +42,8 @@
       href="{{ url_for('static', filename='css/styles.css') }}"
       rel="stylesheet"
     />
-  </head>
+    {% endblock %}
+
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">

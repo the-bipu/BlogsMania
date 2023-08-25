@@ -21,7 +21,7 @@ OWN_PASSWORD = os.getenv("EMAIL_PASSWORD")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 ckeditor = CKEditor(app)
-Bootstrap5(app)
+bootstrap = Bootstrap5(app)
 
 # For adding profile images to the comment section
 gravatar = Gravatar(app,
